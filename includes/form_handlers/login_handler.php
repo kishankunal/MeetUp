@@ -2,7 +2,7 @@
    if(isset($_POST['login_button'])){
        $email = filter_var($_POST['log_email'],FILTER_SANITIZE_EMAIL);
        $_SESSION['log_email'] = $email; //store email into session var
-       $password = md5($_POST['log_password']);//get password
+       $password = md5($_POST['log_password']);//get password after encryption
        $check_datbase_query = mysqli_query($con,"SELECT * FROM user WHERE email='$email' AND password='$password'");
        $check_login_query = mysqli_num_rows($check_datbase_query);
 
