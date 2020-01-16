@@ -108,7 +108,7 @@
     
             array_push($error_array,"<span style='color:#14c800;'>You're all set!  Go ahead and login!</span><br>");
 
-            //clear session variables
+            //clear session variables.
             $_SESSION['reg_fname']="";
             $_SESSION['reg_lname']="";
             $_SESSION['reg_email']="";
