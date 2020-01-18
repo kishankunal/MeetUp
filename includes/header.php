@@ -33,7 +33,7 @@
             <a href="index.php">MeetUp !</a>
         </div>
         <nav>
-            <a href=""><?php echo $user['first_name']?></i></a>
+            <a href="<?php echo $userLoggedIn?>"><?php echo $user['first_name']?></i></a>
             <a href="index.php"><i class="fa fa-home fa-lg"></i></a>
             <a href=""><i class="fa fa-envelop fa-lg"></i></a>
             <a href=""><i class="fa fa-bell-o fa-lg"></i></a>
@@ -42,3 +42,4 @@
             <a href=""><i class="fa fa-sign-out fa-lg"></i></a>
         </nav>
      </div>
+     <div class="wrapper">
