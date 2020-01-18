@@ -19,6 +19,8 @@ body{
     border-bottom:.25em solid #1894ca;
     margin: 0 0 10px 0;
     display: inline-flex;
+    position: fixed;
+    z-index: 10;
 }
 
 .logo{
@@ -51,5 +53,24 @@ nav a:hover{
     opacity: .7;
 }
 
-
-
+.wrapper{
+    margin: 0 auto;
+    top: 50px;
+    position: relative;
+    padding: 0 10px;
+    width: 75%;
+    min-width: 950px;
+}
+.column{
+    background-color: #fff;
+    padding: 10px;
+    border: 1 px solid #D3D3d3;
+    border-radius: 5px;
+    box-shadow: 2px 2px 1px #D3D3d3;
+    z-index: -1;
+}
+.user_deatils{
+    width: 250px;
+    float: left;
+    margin-bottom: 20PX;
+}
