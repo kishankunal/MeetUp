@@ -99,10 +99,10 @@
             //profile pic assignment
             $rand = rand(1,2);
             if($rand==1){
-                $profile_pic = "assets/images/profile_pic/deafults/default_profile_pic.png";
+                $profile_pic = "assets/images/profile_pic/defaults/default_profile_pic.png";
             }
             else if($rand==2){
-                $profile_pic = "assets/images/profile_pic/deafults/default_2.png";
+                $profile_pic = "assets/images/profile_pic/defaults/default_2.png";
             }
             $query = mysqli_query($con,"INSERT INTO user VALUES (NULL,'$fname','$lname','$username','$em','$password','$date','$profile_pic','0','0','no',',')");
     
