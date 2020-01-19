@@ -119,6 +119,9 @@ class Post {
 
 					<?php
 
+					 $comments_check = mysqli_query($this->con,"SELECT * FROM comments WHERE post_id = '$id'");
+					 $comments_check_num = mysqli_num_rows($comments_check);
+
 					//Timeframe
 					$date_time_now = date("Y-m-d H:i:s");
 					$start_date = new DateTime($date_time); //Time of post
@@ -183,7 +186,7 @@ class Post {
 						}
 					}
 
-					$str .= "<div class='status_post' onclick='javascript:toggle$id()'>
+					$str .= "<div class='status_post' >
 								<div class='post_profile_pic'>
 									<img src='$profile_pic' width='50'>
 								</div>
@@ -193,11 +196,15 @@ class Post {
 								</div>
 								<div id='post_body'>
 									$body
-									<br>
+									<br><br><br>
+
+								</div>
+								<div class='newsfeedPostOptions' onclick='javascript:toggle$id()'>
+								    Comments($comments_check_num)&nbsp;&nbsp;&nbsp;
 								</div>
 
 							</div>
-							<div class='post_comment' id = 'toggleComment$id' style='display:none'>
+							<div class='post_comment' id = 'toggleComment$id' style='display:none; background:#e5e5e5'>
 							   <iframe src='comment_frame.php?post_id=$id' id= 'comment_iframe' frameborder='0'></iframe>
 							</div>
 							<hr>";

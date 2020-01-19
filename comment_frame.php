@@ -1,19 +1,4 @@
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-</head>
-<body>
-
-	<style type="text/css">
-	* {
-		font-size: 12px;
-		font-family: Arial, Helvetica, Sans-serif;
-	}
-
-	</style>
-
-	<?php  
+<?php  
 	require 'config/config.php';
 	include("includes/classes/User.php");
 	include("includes/classes/Post.php");
@@ -27,7 +12,26 @@
 		header("Location: register.php");
 	}
 
-	?>
+?>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+	<style type="text/css">
+	* {
+		font-size: 12px;
+		font-family: Arial, Helvetica, Sans-serif;
+    }
+    a{
+        text-decoration: none;
+    }
+
+	</style>
+
+	
 	<script>
 		function toggle() {
 			var element = document.getElementById("comment_section");
@@ -55,7 +59,7 @@
 		$post_body = mysqli_escape_string($con, $post_body);
 		$date_time_now = date("Y-m-d H:i:s");
 		$insert_post = mysqli_query($con, "INSERT INTO comments VALUES (NULL, '$post_body', '$userLoggedIn', '$posted_to', '$date_time_now', 'no', '$post_id')");
-		echo "<p>Comment Posted! </p>";
+		//echo "<p>Comment Posted! </p>";
 	}
 	?>
 	<form action="comment_frame.php?post_id=<?php echo $post_id; ?>" id="comment_form" name="postComment<?php echo $post_id; ?>" method="POST">
