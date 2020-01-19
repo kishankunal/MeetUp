@@ -194,7 +194,7 @@ class Post {
 								<div class='posted_by' style='color:#ACACAC;'>
 									<a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
 								</div>
-								<div id='post_body'>
+								<div id='post_body' style='margin-left:10px;'>
 									$body
 									<br><br><br>
 
