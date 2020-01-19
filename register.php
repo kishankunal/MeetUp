@@ -116,7 +116,7 @@ require 'includes/form_handlers/login_handler.php';
 					<input type="submit" name="register_button" value="Register">
 					<br>
 
-					<?php if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"; ?>
+					<?php if(in_array("<span style='color:#14c800;'>You're all set!  Go ahead and login!</span><br>", $error_array)) echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"; ?>
 					<a href="#" id="signin" class="signin">Already have an account? Sign in here!</a>
 				</form>
 			</div>

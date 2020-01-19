@@ -27,7 +27,6 @@ if(isset($_POST['post'])){
 
 			?>
 		</div>
-
 	</div>
 
 	<div class="main_column column">
