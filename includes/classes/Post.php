@@ -83,8 +83,8 @@ class Post {
 				}
 
 				$user_logged_obj = new User($this->con, $userLoggedIn);
+				
 				if($user_logged_obj->isFriend($added_by)){
-
 					if($num_iterations++ < $start)
 						continue; 
 
