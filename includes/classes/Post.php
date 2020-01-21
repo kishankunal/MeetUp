@@ -201,7 +201,7 @@ class Post {
 								</div>
 								<div class='newsfeedPostOptions' onclick='javascript:toggle$id()'>
 									Comments($comments_check_num)&nbsp;&nbsp;&nbsp;
-									<iframe src='like.php?post_id=$id' id='comment_iframe' frameborder='0'></iframe> 
+									<iframe src='like.php?post_id=$id' scrolling='no'></iframe> 
 								</div>
 
 							</div>

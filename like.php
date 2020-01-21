@@ -15,8 +15,17 @@
 
 	form {
 		position: absolute;
-		top: 0;
+		top: 3px;
 	}
+    input{
+        outline:none;
+        cursor:hand;
+
+    }
+    input:focus{
+        outline:none;
+  
+    }
 
 	</style>
 
@@ -50,6 +59,9 @@
 
 	//Like button
 	if(isset($_POST['like_button'])) {
+        $get_likes = mysqli_query($con, "SELECT likes, added_by FROM posts WHERE id='$post_id'");
+	    $row = mysqli_fetch_array($get_likes);
+	    $total_likes = $row['likes']; 
 		$total_likes++;
 		$query = mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE id='$post_id'");
 		$total_user_likes++;
@@ -60,16 +72,20 @@
 	}
 	//Unlike button
 	if(isset($_POST['unlike_button'])) {
+        $get_likes = mysqli_query($con, "SELECT likes, added_by FROM posts WHERE id='$post_id'");
+	    $row = mysqli_fetch_array($get_likes);
+	    $total_likes = $row['likes']; 
 		$total_likes--;
 		$query = mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE id='$post_id'");
 		$total_user_likes--;
 		$user_likes = mysqli_query($con, "UPDATE user SET num_likes='$total_user_likes' WHERE username='$user_liked'");
-		$insert_user = mysqli_query($con, "DELETE FROM likes WHERE username='$userLoggedIn' AND post_id='$post_id'");
+		$insert_user = mysqli_query($con, "DELETE FROM likes WHERE user_name='$userLoggedIn' AND post_id='$post_id'");
 	}
 
 	//Check for previous likes
-	$check_query = mysqli_query($con, "SELECT * FROM likes WHERE username='$userLoggedIn' AND post_id='$post_id'");
-	$num_rows = mysqli_num_rows($check_query);
+	$check_query = mysqli_query($con, "SELECT * FROM likes WHERE user_name='$userLoggedIn' AND post_id='$post_id'");
+    $num_rows = mysqli_num_rows($check_query);
+
 
 	if($num_rows > 0) {
 		echo '<form action="like.php?post_id=' . $post_id . '" method="POST">
