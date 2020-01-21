@@ -53,6 +53,7 @@ nav a:hover{
     opacity: .7;
 }
 
+
 .wrapper{
     margin: 0 auto;
     top: 50px;
@@ -213,6 +214,7 @@ textarea:focus{
 	display: inline;
 	font-size: 14px;
 }
+
 
 .profile_left {
 	top: -10px;
