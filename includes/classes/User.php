@@ -120,6 +120,7 @@ class User {
 
 				if($i == $j && $i != "") {
 					$mutualFriends++;
+				    break;
 				}
 			}
 		}
