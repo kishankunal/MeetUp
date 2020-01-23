@@ -26,19 +26,21 @@ if(isset($_FILES['image']['name'])){
 		$ImageName = $_FILES['image']['name'];
 		$ImageSize = $_FILES['image']['size'];
 		$ImageTempName = $_FILES['image']['tmp_name'];
-	//Get File Ext   
+	//Get File Ext 
 		$ImageType = @explode('/', $_FILES['image']['type']);
-		$type = $ImageType[1]; //file type	
+		//print_r ($ImageType);
+		$type = $ImageType[1]; //file type
 	//Set Upload directory    
 		$uploaddir = $_SERVER['DOCUMENT_ROOT'].'/fakebook/assets/images/profile_pic';
 	//Set File name	
-		$file_temp_name = $profile_id.'_original.'.md5(time()).'n'.$type; //the temp file name
+		$file_temp_name = $profile_id.'_original.'.md5(time()).'n.'.$type; //the temp file name
 		$fullpath = $uploaddir."/".$file_temp_name; // the temp file path
 		$file_name = $profile_id.'_temp.jpeg'; //$profile_id.'_temp.'.$type; // for the final resized image
 		$fullpath_2 = $uploaddir."/".$file_name; //for the final resized image
 	//Move the file to correct location
+	   
 		$move = move_uploaded_file($ImageTempName ,$fullpath) ; 
-		chmod($fullpath, 0777);  
+		chmod($fullpath, 0000);  
 		//Check for valid uplaod
 		if (!$move) { 
 			die ('File didnt upload');
@@ -147,7 +149,7 @@ if (isset($_POST['x'])){
 		$result_path ="assets/images/profile_pic/".$finalname."n.jpeg";
 
 		//Insert image into database
-		$insert_pic_query = mysqli_query($con, "UPDATE users SET profile_pic='$result_path' WHERE username='$userLoggedIn'");
+		$insert_pic_query = mysqli_query($con, "UPDATE user SET profile_pic='$result_path' WHERE username='$userLoggedIn'");
 		header("Location: ".$userLoggedIn);
 														
 }// post x
