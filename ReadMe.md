@@ -8,6 +8,15 @@
 
 ​
 
+## Technologies Used
+* Front-end:
+   - HTML
+   - CSS
+   - Javascript
+* Back-end
+  - PHP
+* Database
+  - mysql
 ​
 
 ## Features
