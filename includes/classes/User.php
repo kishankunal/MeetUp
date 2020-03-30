@@ -5,7 +5,7 @@ class User {
 
 	public function __construct($con, $user){
 		$this->con = $con;
-		$user_details_query = mysqli_query($con, "SELECT * FROM user WHERE username='$user'");
+		$user_details_query = mysqli_query($con, "SELECT * FROM users WHERE username='$user'");
 		$this->user = mysqli_fetch_array($user_details_query);
 	}
 
@@ -13,37 +13,43 @@ class User {
 		return $this->user['username'];
 	}
 
+	public function getNumberOfFriendRequests() {
+		$username = $this->user['username'];
+		$query = mysqli_query($this->con, "SELECT * FROM friend_requests WHERE user_to='$username'");
+		return mysqli_num_rows($query);
+	}
+
 	public function getNumPosts() {
 		$username = $this->user['username'];
-		$query = mysqli_query($this->con, "SELECT num_posts FROM user WHERE username='$username'");
+		$query = mysqli_query($this->con, "SELECT num_posts FROM users WHERE username='$username'");
 		$row = mysqli_fetch_array($query);
 		return $row['num_posts'];
 	}
 
 	public function getFirstAndLastName() {
 		$username = $this->user['username'];
-		$query = mysqli_query($this->con, "SELECT first_name, last_name FROM user WHERE username='$username'");
+		$query = mysqli_query($this->con, "SELECT first_name, last_name FROM users WHERE username='$username'");
 		$row = mysqli_fetch_array($query);
 		return $row['first_name'] . " " . $row['last_name'];
 	}
 
 	public function getProfilePic() {
 		$username = $this->user['username'];
-		$query = mysqli_query($this->con, "SELECT profile_pic FROM user WHERE username='$username'");
+		$query = mysqli_query($this->con, "SELECT profile_pic FROM users WHERE username='$username'");
 		$row = mysqli_fetch_array($query);
 		return $row['profile_pic'];
 	}
 
 	public function getFriendArray() {
 		$username = $this->user['username'];
-		$query = mysqli_query($this->con, "SELECT friend_array FROM user WHERE username='$username'");
+		$query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE username='$username'");
 		$row = mysqli_fetch_array($query);
 		return $row['friend_array'];
 	}
 
 	public function isClosed() {
 		$username = $this->user['username'];
-		$query = mysqli_query($this->con, "SELECT user_closed FROM user WHERE username='$username'");
+		$query = mysqli_query($this->con, "SELECT user_closed FROM users WHERE username='$username'");
 		$row = mysqli_fetch_array($query);
 
 		if($row['user_closed'] == 'yes')
@@ -88,15 +94,15 @@ class User {
 	public function removeFriend($user_to_remove) {
 		$logged_in_user = $this->user['username'];
 
-		$query = mysqli_query($this->con, "SELECT friend_array FROM user WHERE username='$user_to_remove'");
+		$query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE username='$user_to_remove'");
 		$row = mysqli_fetch_array($query);
 		$friend_array_username = $row['friend_array'];
 
 		$new_friend_array = str_replace($user_to_remove . ",", "", $this->user['friend_array']);
-		$remove_friend = mysqli_query($this->con, "UPDATE user SET friend_array='$new_friend_array' WHERE username='$logged_in_user'");
+		$remove_friend = mysqli_query($this->con, "UPDATE users SET friend_array='$new_friend_array' WHERE username='$logged_in_user'");
 
 		$new_friend_array = str_replace($this->user['username'] . ",", "", $friend_array_username);
-		$remove_friend = mysqli_query($this->con, "UPDATE user SET friend_array='$new_friend_array' WHERE username='$user_to_remove'");
+		$remove_friend = mysqli_query($this->con, "UPDATE users SET friend_array='$new_friend_array' WHERE username='$user_to_remove'");
 	}
 
 	public function sendRequest($user_to) {
@@ -109,7 +115,7 @@ class User {
 		$user_array = $this->user['friend_array'];
 		$user_array_explode = explode(",", $user_array);
 
-		$query = mysqli_query($this->con, "SELECT friend_array FROM user WHERE username='$user_to_check'");
+		$query = mysqli_query($this->con, "SELECT friend_array FROM users WHERE username='$user_to_check'");
 		$row = mysqli_fetch_array($query);
 		$user_to_check_array = $row['friend_array'];
 		$user_to_check_array_explode = explode(",", $user_to_check_array);
@@ -120,7 +126,6 @@ class User {
 
 				if($i == $j && $i != "") {
 					$mutualFriends++;
-				    break;
 				}
 			}
 		}

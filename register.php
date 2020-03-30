@@ -7,7 +7,7 @@ require 'includes/form_handlers/login_handler.php';
 
 <html>
 <head>
-	<title>Welcome to MeetUp!</title>
+	<title>Welcome to Swirlfeed!</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/register_style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="assets/js/register.js"></script>
@@ -38,7 +38,7 @@ require 'includes/form_handlers/login_handler.php';
 		<div class="login_box">
 
 			<div class="login_header">
-				<h1>MeetUp!</h1>
+				<h1>Swirlfeed!</h1>
 				Login or sign up below!
 			</div>
 			<br>
@@ -53,7 +53,7 @@ require 'includes/form_handlers/login_handler.php';
 					<br>
 					<input type="password" name="log_password" placeholder="Password">
 					<br>
-					<?php if(in_array("Email or Password is incorrect<br>", $error_array)) echo  "Email or Password is incorrect<br>"; ?>
+					<?php if(in_array("Email or password was incorrect<br>", $error_array)) echo  "Email or password was incorrect<br>"; ?>
 					<input type="submit" name="login_button" value="Login">
 					<br>
 					<a href="#" id="signup" class="signup">Need an account? Register here!</a>
@@ -71,9 +71,7 @@ require 'includes/form_handlers/login_handler.php';
 					} 
 					?>" required>
 					<br>
-          <?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array))
-               echo "Your first name must be between 2 and 25 characters<br>"; 
-          ?>
+					<?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) echo "Your first name must be between 2 and 25 characters<br>"; ?>
 					
 					
 
@@ -99,8 +97,8 @@ require 'includes/form_handlers/login_handler.php';
 					} 
 					?>" required>
 					<br>
-					<?php if(in_array("Email already registered<br>", $error_array)) echo "Email already registered<br>"; 
-					else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid Email format<br>";
+					<?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
+					else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>";
 					else if(in_array("Emails don't match<br>", $error_array)) echo "Emails don't match<br>"; ?>
 
 
@@ -116,7 +114,7 @@ require 'includes/form_handlers/login_handler.php';
 					<input type="submit" name="register_button" value="Register">
 					<br>
 
-					<?php if(in_array("<span style='color:#14c800;'>You're all set!  Go ahead and login!</span><br>", $error_array)) echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"; ?>
+					<?php if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"; ?>
 					<a href="#" id="signin" class="signin">Already have an account? Sign in here!</a>
 				</form>
 			</div>
